@@ -13,7 +13,7 @@ public class JavaMaxHeap {
             largest = left;
         }
         if (right < size && arrl.get(right) > arrl.get(largest)) {
-            right = largest;
+            largest = right;
         }
 
         if (largest != i) {
@@ -25,7 +25,7 @@ public class JavaMaxHeap {
         }
     }
 
-    void insert(ArrayList<Integer> arrl, int num) {
+    void insert(ArrayList<Integer> arrl, Integer num) {
         int size = arrl.size();
         if (size == 0) {
             arrl.add(num);
@@ -37,7 +37,7 @@ public class JavaMaxHeap {
         }
     }
 
-    void delete(ArrayList<Integer> arrl, int num) {
+    void delete(ArrayList<Integer> arrl, Integer num) {
         int size = arrl.size();
         int i;
         for (i = 0; i < size; i++) {
@@ -56,11 +56,10 @@ public class JavaMaxHeap {
         }
     }
 
-    void printHeap(ArrayList<Integer> arrl, int size) {
+    void printHeap(ArrayList<Integer> arrl) {
         for (Integer i : arrl) {
             System.out.println(i);
         }
-        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -76,7 +75,13 @@ public class JavaMaxHeap {
         mh.insert(myArrayl, 2);
 
         System.out.println("Max heap array ");
-        mh.printHeap(myArrayl, size);
+        mh.printHeap(myArrayl);
+
+        mh.delete(myArrayl, 5);
+
+        System.out.println("Max heap array ");
+        mh.printHeap(myArrayl);
+
     }
 
 }
