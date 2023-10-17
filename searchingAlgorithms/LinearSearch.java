@@ -1,4 +1,3 @@
-package algorithmsJava.searchingAlgorithms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
