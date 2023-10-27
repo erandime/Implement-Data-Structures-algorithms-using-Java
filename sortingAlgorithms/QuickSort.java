@@ -31,7 +31,9 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {2, 8, 9, 1, 3};
-        new QuickSort().partition(arr, 0, 4);
+        int n = arr.size;
+        new QuickSort().partition(arr, 0, size - 1);
+        
         System.out.println(Arrays.toString(arr));
 
     }
