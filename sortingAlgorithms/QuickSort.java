@@ -2,39 +2,41 @@
 import java.util.Arrays;
 
 public class QuickSort {
+//rmi = size - 1, lmi = 0
 
-    void quickSort(int[] arr, int lmi, int rmi) {
+    static void quicksort1(int[] array, int lmi, int rmi) {
         if (lmi < rmi) {
-            int pointer = partition(arr, lmi, rmi);
-            quickSort(arr, lmi, pointer - 1);
-            quickSort(arr, pointer + 1, rmi);
+            int p = quicksort2(array, lmi, rmi);
+            quicksort1(array, p + 1, rmi);
+            quicksort1(array, lmi, p - 1);
         }
     }
 
-    int partition(int[] arr, int lmi, int rmi) {
-        int pivot = arr[rmi];
-        int pointer = lmi - 1;
+    static int quicksort2(int[] array, int lmi, int rmi) {
+        int pointer = lmi;
+        int pivot = rmi;
+
         for (int i = lmi; i < rmi; i++) {
-            if (arr[i] <= pivot) {
+            if (array[i] <= array[pivot]) {
+                int temp = array[pointer];
+                array[pointer] = array[i];
+                array[i] = temp;
                 pointer++;
-                int temp = arr[pointer];
-                arr[pointer] = arr[i];
-                arr[i] = temp;
             }
         }
-        pointer++;
-        int temp = arr[pointer];
-        arr[pointer] = arr[rmi];
-        arr[rmi] = temp;
+
+        int temp = array[pointer];
+        array[pointer] = array[pivot];
+        array[pivot] = temp;
+
         return pointer;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 8, 9, 1, 3};
-        int n = arr.size;
-        new QuickSort().partition(arr, 0, size - 1);
-        
-        System.out.println(Arrays.toString(arr));
 
+        int[] arr = {8, 7, 6, 1, 0, 9, 2};
+        QuickSort.quicksort1(arr, 0, arr.length - 1);
+
+        System.out.println(Arrays.toString(arr));
     }
 }
